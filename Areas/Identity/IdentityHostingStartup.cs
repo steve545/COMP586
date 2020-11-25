@@ -15,12 +15,16 @@ namespace CoreAngCombinedNew.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<CoreAngCombinedNewIdentityDbContext>(options =>
+                services.AddDbContext<AuthDbContext>(options =>
                     options.UseSqlServer(
-                        context.Configuration.GetConnectionString("CoreAngCombinedNewIdentityDbContextConnection")));
-
-                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<CoreAngCombinedNewIdentityDbContext>();
+                        context.Configuration.GetConnectionString("AuthDbContextConnection")));
+                                            /*IdentityUser*/
+                services.AddDefaultIdentity<ApplicationUser>(options => {
+                    options.SignIn.RequireConfirmedAccount = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false;
+                })
+                    .AddEntityFrameworkStores<AuthDbContext>();
             });
         }
     }

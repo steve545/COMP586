@@ -1,16 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using CoreAngCombinedNew.Areas.Identity.Data;
+
 
 namespace CoreAngCombinedNew.Areas.Identity.Data
 {
-    public class CoreAngCombinedNewIdentityDbContext : IdentityDbContext<IdentityUser>
+
+    public class AuthDbContext : IdentityDbContext<ApplicationUser>
     {
-        public CoreAngCombinedNewIdentityDbContext(DbContextOptions<CoreAngCombinedNewIdentityDbContext> options)
+        public AuthDbContext(DbContextOptions<AuthDbContext> options)
             : base(options)
         {
         }
@@ -24,3 +22,4 @@ namespace CoreAngCombinedNew.Areas.Identity.Data
         }
     }
 }
+/*IdentityUser*/
