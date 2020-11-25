@@ -26,6 +26,7 @@ namespace CoreAngCombinedNew
         {
             services.AddControllersWithViews();
             services.AddControllers();
+            services.AddRazorPages();
             
             services.AddDbContext<BookDatabaseContext>(options => options.UseSqlServer(ConnectionString));
 
@@ -52,19 +53,20 @@ namespace CoreAngCombinedNew
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseAuthentication();
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();
             }
 
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
 
             app.UseSpa(spa =>

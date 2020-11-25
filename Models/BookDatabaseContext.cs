@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
 namespace CoreAngCombinedNew.Models
 {
     public partial class BookDatabaseContext : DbContext
