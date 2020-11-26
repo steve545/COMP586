@@ -60,6 +60,9 @@ namespace CoreAngCombinedNew
 
             app.UseRouting();
             app.UseAuthentication();
+            /*maybe this will fix the error when going to user profile...
+             finish the video to hopefully find solution!*/
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
