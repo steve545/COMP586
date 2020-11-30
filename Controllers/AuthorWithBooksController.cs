@@ -9,15 +9,18 @@ using System.Threading.Tasks;
 namespace CoreAngCombinedNew.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class AuthorsWithBooksController : ControllerBase{
+    [ApiController]                            /*ControllerBase*/
+    public class AuthorWithBooksController : Controller{
         private readonly BookDatabaseContext _context;
 
-        public AuthorsWithBooksController(BookDatabaseContext context)
+        public AuthorWithBooksController(BookDatabaseContext context)
         {
             _context = context;
         }
-
+        public ActionResult Index()
+        {
+            return View();
+        }
         // GET: api/Authors/5
         [HttpGet("{id}")]
         public async Task<ActionResult<List<AuthorWithBooksVM>>> GetAuthorWithBooks(int id)

@@ -1,0 +1,14 @@
+﻿@model CoreAngCombinedNew.View_Models.AuthorWithBooksVM
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+@using (Html.BeginForm("yessir", "Yesy", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.DisplayNameFor(s => s.AuthorName)
+    </div>
+    <div class="form-group">
+        @Html.DisplayNameFor(s => s.BookNameList)
+    </div>
+}
