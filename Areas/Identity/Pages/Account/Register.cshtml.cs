@@ -77,7 +77,7 @@ namespace CoreAngCombinedNew.Areas.Identity.Pages.Account
         {
             if (User.Identity.IsAuthenticated)
             {
-                Response.Redirect("/api/authors");
+                Response.Redirect("/Home");
             }
 
             ReturnUrl = returnUrl;
