@@ -4,12 +4,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CoreAngCombinedNew.Models;
-
 namespace CoreAngCombinedNew.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class AuthorsController : ControllerBase
+    [ApiController]                 /*ControllerBase*/
+    public class AuthorsController : Controller
     {
         private readonly BookDatabaseContext _context;
 
