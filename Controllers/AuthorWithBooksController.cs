@@ -1,5 +1,4 @@
 ﻿using CoreAngCombinedNew.Models;
-using CoreAngCombinedNew.View_Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -19,9 +18,12 @@ namespace CoreAngCombinedNew.Controllers
         }
         public ActionResult Index()
         {
-            return View();
+            var authors = from a in _context.Authors
+                          select a;
+
+            return View(authors.ToList());
         }
-        // GET: api/Authors/5
+        // GET: api/AuthorWithBooks/5
         [HttpGet("{id}")]
         public async Task<ActionResult<List<AuthorWithBooksVM>>> GetAuthorWithBooks(int id)
         {
@@ -30,10 +32,11 @@ namespace CoreAngCombinedNew.Controllers
                                   select new AuthorWithBooksVM
                                   {
                                       AuthorName = a.Name,
-                                      BookNameList = a.Books.Select(b => b.Title).ToList()
+                                      BookNameList = a.Books.ToList() //a.Books.Select(b => b.Title).ToList()
                                   };
 
-            return await authorWithBooks.ToListAsync();
+
+            return View(await authorWithBooks.ToListAsync());
         }
     }
 }

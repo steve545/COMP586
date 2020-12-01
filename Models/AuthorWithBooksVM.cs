@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace CoreAngCombinedNew.View_Models
+namespace CoreAngCombinedNew.Models
 {
     public class AuthorWithBooksVM
     {
@@ -9,7 +10,7 @@ namespace CoreAngCombinedNew.View_Models
         public string AuthorName { get; set; }
 
         [Display(Name="Book Name List")]
-        public List<string> BookNameList { get; set; }
-
+        public virtual ICollection<Books> BookNameList { get; set; }
+        /*public List<string>*/
     }
 }

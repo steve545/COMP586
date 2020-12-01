@@ -1,14 +1,29 @@
-﻿@model CoreAngCombinedNew.View_Models.AuthorWithBooksVM
+﻿@model IEnumerable<CoreAngCombinedNew.Models.AuthorWithBooksVM>
 @{
     ViewBag.Title = "Index";
 }
 <h2>Index</h2>
-@using (Html.BeginForm("yessir", "Yesy", FormMethod.Post))
-{
-    <div class="form-group">
-        @Html.DisplayNameFor(s => s.AuthorName)
-    </div>
-    <div class="form-group">
-        @Html.DisplayNameFor(s => s.BookNameList)
-    </div>
-}
+
+<table class ="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookNameList)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookNameList)
+            </td>
+        </tr>
+    }
+</table>
