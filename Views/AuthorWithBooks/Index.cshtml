@@ -1,29 +1,75 @@
 ﻿@model IEnumerable<CoreAngCombinedNew.Models.AuthorWithBooksVM>
 @{
-    ViewBag.Title = "Index";
+    ViewData["Title"] = "Index";
+    Layout = "/Pages/Shared/_Layout.cshtml";
 }
-<h2>Index</h2>
 
-<table class ="table">
+<style>
+    #table {
+        font-family: "Roboto", sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #table td, #table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #table tr:hover {
+            background-color: #ddd;
+        }
+
+        #table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #6699ff;
+            color: white;
+        }
+</style>
+
+<h1>Authors</h1>
+<div>
+
+    <hr />
+    <dl class="row">
+        <dd class="col-sm-10">
+        </dd>
+    </dl>
+</div>
+
+<!--This creates the header row and columns for the table-->
+<table class="table" id="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AuthorName)
+            Author Id
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BookNameList)
+            Author Name
         </th>
-        <th></th>
+        <th>
+            Actions
+        </th>
     </tr>
 
-    @foreach(var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AuthorName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookNameList)
-            </td>
-        </tr>
-    }
+        @foreach (var authors in Model)
+        {
+            <!--creates a row per item in the model-->
+<tr>
+    <!--fills in the cells for the row-->
+    <td>@authors.AuthorId</td>
+    <td>@authors.AuthorName</td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", "api", new { id = authors.AuthorId }, null) |
+        @Html.ActionLink("Details", "Details", "api", new { id = authors.AuthorId }, null) |
+        @Html.ActionLink("Authors Books", "authorwithbooks", "api", new { id = authors.AuthorId }, null) |
+        @Html.ActionLink("Delete", "Delete", "api", new { id = authors.AuthorId }, null)
+    </td>
+</tr>
+        }
 </table>
