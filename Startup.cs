@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CoreAngCombinedNew.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CoreAngCombinedNew
 {
@@ -35,6 +36,10 @@ namespace CoreAngCombinedNew
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddMvc().AddRazorPagesOptions(options => {
+                options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "");
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,15 +65,14 @@ namespace CoreAngCombinedNew
 
             app.UseRouting();
             app.UseAuthentication();
-            /*maybe this will fix the error when going to user profile...
-             finish the video to hopefully find solution!*/
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
 
@@ -84,6 +88,8 @@ namespace CoreAngCombinedNew
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+
         }
     }
 }

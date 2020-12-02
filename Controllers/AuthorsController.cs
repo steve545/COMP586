@@ -4,10 +4,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CoreAngCombinedNew.Models;
+using Microsoft.AspNetCore.Authorization;
+
 namespace CoreAngCombinedNew.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]                 /*ControllerBase*/
+    [Authorize]
     public class AuthorsController : Controller
     {
         private readonly BookDatabaseContext _context;
@@ -19,6 +22,7 @@ namespace CoreAngCombinedNew.Controllers
 
         // GET: api/Authors
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Authors>>> GetAuthors()
         {
             return await _context.Authors.ToListAsync();
@@ -26,6 +30,7 @@ namespace CoreAngCombinedNew.Controllers
 
         // GET: api/Authors/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Authors>> GetAuthors(int id)
         {
             var authors = await _context.Authors.FindAsync(id);
@@ -42,6 +47,7 @@ namespace CoreAngCombinedNew.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutAuthors(int id, Authors authors)
         {
             if (id != authors.AuthorId)
@@ -74,6 +80,7 @@ namespace CoreAngCombinedNew.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Authors>> PostAuthors(Authors authors)
         {
             _context.Authors.Add(authors);
@@ -84,6 +91,7 @@ namespace CoreAngCombinedNew.Controllers
 
         // DELETE: api/Authors/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<ActionResult<Authors>> DeleteAuthors(int id)
         {
             var authors = await _context.Authors.FindAsync(id);

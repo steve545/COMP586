@@ -4,11 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CoreAngCombinedNew.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]                            /*ControllerBase*/
+    [ApiController]
+    [Authorize]
+    /*ControllerBase*/
     public class AuthorWithBooksController : Controller{
         private readonly BookDatabaseContext _context;
 
@@ -25,6 +28,7 @@ namespace CoreAngCombinedNew.Controllers
         }
         // GET: api/AuthorWithBooks/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<List<AuthorWithBooksVM>>> GetAuthorWithBooks(int id)
         {
             IQueryable<AuthorWithBooksVM> authorWithBooks = from a in _context.Authors
