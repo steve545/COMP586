@@ -31,7 +31,8 @@ import { RegisterComponent } from './register/register.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'authors', component: AuthorsComponent },
-      { path: 'register', component: RegisterComponent }
+      { path: 'register', component: RegisterComponent },
+      { path: 'home', component: HomeComponent }
     ])
   ],
   providers: [],
