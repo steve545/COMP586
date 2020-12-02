@@ -21,10 +21,15 @@ namespace CoreAngCombinedNew.Controllers
         }
         public ActionResult Index()
         {
-            var authors = from a in _context.Authors
-                          select a;
+            IQueryable<AuthorWithBooksVM> authors = from a in _context.Authors
+                          select new AuthorWithBooksVM
+                          {
+                              AuthorName=a.Name,
+                              AuthorId = a.AuthorId,
+                              BookNameList = a.Books.ToList()
+                          };
 
-            return View(authors.ToList());
+            return View(authors);
         }
         // GET: api/AuthorWithBooks/5
         [HttpGet("{id}")]
@@ -36,6 +41,7 @@ namespace CoreAngCombinedNew.Controllers
                                   select new AuthorWithBooksVM
                                   {
                                       AuthorName = a.Name,
+                                      AuthorId = a.AuthorId,
                                       BookNameList = a.Books.ToList() //a.Books.Select(b => b.Title).ToList()
                                   };
 

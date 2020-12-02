@@ -8,6 +8,7 @@ namespace CoreAngCombinedNew.Models
     {
         [Display(Name ="Author Name")]
         public string AuthorName { get; set; }
+        public int AuthorId { get; set; }
 
         [Display(Name="Book Name List")]
         public virtual ICollection<Books> BookNameList { get; set; }
