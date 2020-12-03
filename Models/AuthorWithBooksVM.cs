@@ -12,6 +12,5 @@ namespace CoreAngCombinedNew.Models
 
         [Display(Name="Book Name List")]
         public virtual ICollection<Books> BookNameList { get; set; }
-        /*public List<string>*/
     }
 }

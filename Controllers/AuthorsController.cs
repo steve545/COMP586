@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace CoreAngCombinedNew.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]                 /*ControllerBase*/
+    [ApiController]                 
     [Authorize]
     public class AuthorsController : Controller
     {
@@ -25,8 +25,18 @@ namespace CoreAngCombinedNew.Controllers
         [Authorize]
         public async Task<ActionResult<IEnumerable<Authors>>> GetAuthors()
         {
-            return await _context.Authors.ToListAsync();
+            return View(await _context.Authors.ToListAsync());
         }
+
+        /*public ActionResult Edit(int id)
+        {
+            //here, get the aurthor from the database in the real application
+
+            //getting a student from collection for demo purpose
+            var author = _context.Authors.FindAsync(id);
+
+            return View(author);
+        }*/
 
         // GET: api/Authors/5
         [HttpGet("{id}")]
