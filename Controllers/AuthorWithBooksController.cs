@@ -11,7 +11,6 @@ namespace CoreAngCombinedNew.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    /*ControllerBase*/
     public class AuthorWithBooksController : Controller{
         private readonly BookDatabaseContext _context;
 
@@ -42,11 +41,13 @@ namespace CoreAngCombinedNew.Controllers
                                   {
                                       AuthorName = a.Name,
                                       AuthorId = a.AuthorId,
-                                      BookNameList = a.Books.ToList() //a.Books.Select(b => b.Title).ToList()
+                                      BookNameList = a.Books.ToList() 
                                   };
 
 
             return View(await authorWithBooks.ToListAsync());
         }
+
+
     }
 }
