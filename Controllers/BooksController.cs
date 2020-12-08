@@ -12,7 +12,7 @@ namespace CoreAngCombinedNew.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class BooksController : ControllerBase
+    public class BooksController : Controller
     {
         private readonly BookDatabaseContext _context;
 
