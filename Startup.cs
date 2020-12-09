@@ -26,20 +26,16 @@ namespace CoreAngCombinedNew
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddControllers();
-            services.AddRazorPages();
-            
-            services.AddDbContext<BookDatabaseContext>(options => options.UseSqlServer(ConnectionString));
 
-            // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
+             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            services.AddDbContext<BookDatabaseContext>(options => options.UseSqlServer(ConnectionString));
 
-            services.AddMvc().AddRazorPagesOptions(options => {
-                options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "");
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            // In production, the Angular files will be served from this directory
+           
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,17 +59,14 @@ namespace CoreAngCombinedNew
                 app.UseSpaStaticFiles();
             }
 
+
             app.UseRouting();
-            app.UseAuthentication();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
+                    pattern: "{controller}/{action=Index}/{id?}");
             });
 
             app.UseSpa(spa =>

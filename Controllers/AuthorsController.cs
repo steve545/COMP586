@@ -10,7 +10,7 @@ namespace CoreAngCombinedNew.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]                 
-    [Authorize]
+    //[Authorize]
     public class AuthorsController : Controller
     {
         private readonly BookDatabaseContext _context;
@@ -22,25 +22,15 @@ namespace CoreAngCombinedNew.Controllers
 
         // GET: api/Authors
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<IEnumerable<Authors>>> GetAuthors()
         {
-            return View(await _context.Authors.ToListAsync());
+            return await _context.Authors.ToListAsync();
         }
-
-        /*public ActionResult Edit(int id)
-        {
-            //here, get the aurthor from the database in the real application
-
-            //getting a student from collection for demo purpose
-            var author = _context.Authors.FindAsync(id);
-
-            return View(author);
-        }*/
 
         // GET: api/Authors/5
         [HttpGet("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<Authors>> GetAuthors(int id)
         {
             var authors = await _context.Authors.FindAsync(id);
@@ -57,7 +47,7 @@ namespace CoreAngCombinedNew.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> PutAuthors(int id, Authors authors)
         {
             if (id != authors.AuthorId)
@@ -90,7 +80,7 @@ namespace CoreAngCombinedNew.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<Authors>> PostAuthors(Authors authors)
         {
             _context.Authors.Add(authors);
@@ -101,7 +91,7 @@ namespace CoreAngCombinedNew.Controllers
 
         // DELETE: api/Authors/5
         [HttpDelete("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<Authors>> DeleteAuthors(int id)
         {
             var authors = await _context.Authors.FindAsync(id);

@@ -1,38 +1,28 @@
-﻿using CoreAngCombinedNew.Models;
+﻿using CoreAngCombinedNew.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using CoreAngCombinedNew.Models;
 
 namespace CoreAngCombinedNew.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
-    public class AuthorWithBooksController : Controller{
+    [Route("[controller]")]
+    //[Authorize]
+    public class AuthorWithBooksController : ControllerBase{
         private readonly BookDatabaseContext _context;
 
         public AuthorWithBooksController(BookDatabaseContext context)
         {
             _context = context;
         }
-        public ActionResult Index()
-        {
-            IQueryable<AuthorWithBooksVM> authors = from a in _context.Authors
-                          select new AuthorWithBooksVM
-                          {
-                              AuthorName=a.Name,
-                              AuthorId = a.AuthorId,
-                              BookNameList = a.Books.ToList()
-                          };
 
-            return View(authors);
-        }
         // GET: api/AuthorWithBooks/5
         [HttpGet("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<List<AuthorWithBooksVM>>> GetAuthorWithBooks(int id)
         {
             IQueryable<AuthorWithBooksVM> authorWithBooks = from a in _context.Authors
@@ -40,12 +30,11 @@ namespace CoreAngCombinedNew.Controllers
                                   select new AuthorWithBooksVM
                                   {
                                       AuthorName = a.Name,
-                                      AuthorId = a.AuthorId,
-                                      BookNameList = a.Books.ToList() 
+                                      BookNameList = a.Books.Select(b=>b.Title).ToList()
                                   };
 
 
-            return View(await authorWithBooks.ToListAsync());
+            return await authorWithBooks.ToListAsync();
         }
 
 
