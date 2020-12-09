@@ -7,12 +7,14 @@
     <tr>
       <th>Author Id</th>
       <th>Name</th>
+      <th>Author's Books</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let author of authors">
       <td>{{ author.authorId }}</td>
       <td>{{ author.name }}</td>
+      <td><a [routerLink]="['/author-with-books', author.authorId]">View Books</a></td>
     </tr>
   </tbody>
 </table>

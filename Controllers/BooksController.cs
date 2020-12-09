@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace CoreAngCombinedNew.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     //[Authorize]
     public class BooksController : Controller
     {
