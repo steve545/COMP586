@@ -9,10 +9,10 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CoreAngCombinedNew.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
-    public class BooksController : ControllerBase
+    [Route("[controller]")]
+    //[Authorize]
+    public class BooksController : Controller
     {
         private readonly BookDatabaseContext _context;
 
@@ -23,7 +23,7 @@ namespace CoreAngCombinedNew.Controllers
 
         // GET: api/Books
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<IEnumerable<Books>>> GetBooks()
         {
             return await _context.Books.ToListAsync();
@@ -31,7 +31,7 @@ namespace CoreAngCombinedNew.Controllers
 
         // GET: api/Books/5
         [HttpGet("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<BookDto>> GetBooks(int id)
         {
             Books book = await _context.Books.FindAsync(id);
@@ -56,7 +56,7 @@ namespace CoreAngCombinedNew.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> PutBooks(int id, Books books)
         {
             if (id != books.BookId)
@@ -89,7 +89,7 @@ namespace CoreAngCombinedNew.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<Books>> PostBooks(Books books)
         {
             _context.Books.Add(books);
@@ -100,7 +100,7 @@ namespace CoreAngCombinedNew.Controllers
 
         // DELETE: api/Books/5
         [HttpDelete("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<Books>> DeleteBooks(int id)
         {
             var books = await _context.Books.FindAsync(id);
