@@ -10,7 +10,6 @@ namespace CoreAngCombinedNew.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]                 
-    //[Authorize]
     public class AuthorsController : Controller
     {
         private readonly BookDatabaseContext _context;
@@ -22,7 +21,6 @@ namespace CoreAngCombinedNew.Controllers
 
         // GET: api/Authors
         [HttpGet]
-        //[Authorize]
         public async Task<ActionResult<IEnumerable<Authors>>> GetAuthors()
         {
             return await _context.Authors.ToListAsync();
@@ -30,7 +28,6 @@ namespace CoreAngCombinedNew.Controllers
 
         // GET: api/Authors/5
         [HttpGet("{id}")]
-        //[Authorize]
         public async Task<ActionResult<Authors>> GetAuthors(int id)
         {
             var authors = await _context.Authors.FindAsync(id);

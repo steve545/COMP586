@@ -1,1 +1,21 @@
-<p>author-with-books works!</p>
+<h1 id="tableLabel">Author's Books</h1>
+
+<p *ngIf="!authorWithBooks"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="authorWithBooks">
+  <thead>
+    <tr>
+      <th>Author Name</th>
+      <th>Book Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let authorWithBook of authorWithBooks">
+      <tr *ngFor="let bookName of authorWithBook.bookNameList">
+        <td>{{ authorWithBook.authorName }}</td>
+        <td>{{ bookName }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+<a routerLink="/authors"> Go back to Authors </a>

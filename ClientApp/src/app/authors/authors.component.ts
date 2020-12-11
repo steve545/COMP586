@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Output } from '@angular/core';
+import { AuthorsService } from '../authors.service';
 
 @Component({
   selector: 'app-authors',
@@ -7,17 +7,18 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./authors.component.css']
 })
 export class AuthorsComponent {
-  public authors: Author[];
+  public authors = [];
+  authorId: number;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<Author[]>(baseUrl + 'api/authors').subscribe(result => {
-      this.authors = result;
-    }, error => console.error(error));
+  constructor(private _authorservice: AuthorsService) { }
+
+  ngOnInit() {
+    this._authorservice.getAuthors().subscribe(data => this.authors = data);
+  }
+  newId(authorId:number) {
+    console.log(authorId);
+    this._authorservice.changeId(authorId)
   }
 }
 
-interface Author {
-  authorId: number,
-  name: string
-}
 
