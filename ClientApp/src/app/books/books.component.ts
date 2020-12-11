@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { BooksService } from '../books.service';
 
 @Component({
   selector: 'app-books',
@@ -7,19 +7,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent {
-  public books: Book[];
+  public books = [];
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<Book[]>(baseUrl + 'api/books').subscribe(result => {
-      this.books = result;
-    }, error => console.error(error));
-  }
+
+  constructor(private _booksservice: BooksService) { }
+
+  ngOnInit() {
+    this._booksservice.getBooks().subscribe(data => this.books = data);
+}
 }
 
-interface Book {
-  bookId: number,
-  authorId: number,
-  title: string,
-  price: number
-}
 

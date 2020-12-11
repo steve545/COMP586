@@ -1,5 +1,5 @@
 <h1 id="tableLabel">Authors</h1>
-
+<h2>{{authorId}}</h2>
 <p *ngIf="!authors"><em>Loading...</em></p>
 
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="authors">
@@ -14,7 +14,7 @@
     <tr *ngFor="let author of authors">
       <td>{{ author.authorId }}</td>
       <td>{{ author.name }}</td>
-      <td><a [routerLink]="['/author-with-books', author.authorId]">View Books</a></td>
+      <td><a (click)="newId(author.authorId)" [routerLink]="['/author-with-books', author.authorId]" >View Books</a></td>
     </tr>
   </tbody>
 </table>

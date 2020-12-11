@@ -1,25 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { IAuthor } from '../author'
+import { Component, OnInit, Output } from '@angular/core';
 import { AuthorsService } from '../authors.service';
 
-@Component({
+@Component({//sibling
   selector: 'app-authors',
   templateUrl: './authors.component.html',
   styleUrls: ['./authors.component.css']
 })
-export class AuthorsComponent implements OnInit{
-  public authors=/*: IAuthor*/[];
+export class AuthorsComponent {
+  public authors = [];
+  authorId: number;
 
-  /*constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<IAuthor[]>(baseUrl + 'api/authors').subscribe(result => {
-      this.authors = result;
-    }, error => console.error(error));
-  }*/
   constructor(private _authorservice: AuthorsService) { }
 
   ngOnInit() {
     this._authorservice.getAuthors().subscribe(data => this.authors = data);
+  }
+  newId(authorId:number) {
+    console.log(authorId);
+    this._authorservice.changeId(authorId)
   }
 }
 

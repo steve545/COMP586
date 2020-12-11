@@ -10,7 +10,7 @@ using CoreAngCombinedNew.Models;
 namespace CoreAngCombinedNew.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     //[Authorize]
     public class AuthorWithBooksController : ControllerBase{
         private readonly BookDatabaseContext _context;

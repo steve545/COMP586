@@ -33,7 +33,7 @@ import { AuthorsService } from './authors.service';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'author-with-books', component: AuthorWithBooksComponent },
+      { path: 'author-with-books/:id', component: AuthorWithBooksComponent },
       { path: 'authors', component: AuthorsComponent },
       { path: 'books', component: BooksComponent }
     ])
