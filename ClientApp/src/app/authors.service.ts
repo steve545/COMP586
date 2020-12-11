@@ -18,8 +18,6 @@ export class AuthorsService {
     return this.selectedId.asObservable();
   }
 
-  //currentId = this.setId.asObservable();
-
   changeId(id: number) {
     console.log(id);
     this.selectedId.next(id)

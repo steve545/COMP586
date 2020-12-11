@@ -1,19 +1,21 @@
 <h1 id="tableLabel">Author's Books</h1>
 
 <p *ngIf="!authorWithBooks"><em>Loading...</em></p>
-<h2>{{authorId}}</h2>
+
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="authorWithBooks">
   <thead>
     <tr>
       <th>Author Name</th>
-      <th>Title</th>
+      <th>Book Title</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let authorWithBook of authorWithBooks">
-      <td>{{ authorWithBook.authorName }}</td>
-      <td>{{ authorWithBook.bookNameList }}</td>
-    </tr>
+    <ng-container *ngFor="let authorWithBook of authorWithBooks">
+      <tr *ngFor="let bookName of authorWithBook.bookNameList">
+        <td>{{ authorWithBook.authorName }}</td>
+        <td>{{ bookName }}</td>
+      </tr>
+    </ng-container>
   </tbody>
 </table>
 <a routerLink="/authors"> Go back to Authors </a>

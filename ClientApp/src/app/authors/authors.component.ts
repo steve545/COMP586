@@ -1,7 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { AuthorsService } from '../authors.service';
 
-@Component({//sibling
+@Component({
   selector: 'app-authors',
   templateUrl: './authors.component.html',
   styleUrls: ['./authors.component.css']
