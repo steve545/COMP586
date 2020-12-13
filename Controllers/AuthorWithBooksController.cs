@@ -11,7 +11,7 @@ namespace CoreAngCombinedNew.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class AuthorWithBooksController : ControllerBase{
         private readonly BookDatabaseContext _context;
 
@@ -22,6 +22,7 @@ namespace CoreAngCombinedNew.Controllers
 
         // GET: api/AuthorWithBooks/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<List<AuthorWithBooksVM>>> GetAuthorWithBooks(int id)
         {
             IQueryable<AuthorWithBooksVM> authorWithBooks = from a in _context.Authors

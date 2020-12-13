@@ -6,8 +6,6 @@ import { RouterModule, Router } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { HomeComponent } from './home/home.component';
 import { AuthorWithBooksComponent } from './author-with-books/author-with-books.component';
 import { AuthorsComponent } from './authors/authors.component';
@@ -17,8 +15,6 @@ import { BooksComponent } from './books/books.component';
   declarations: [
     AppComponent,
     NavMenuComponent,
-    CounterComponent,
-    FetchDataComponent,
     HomeComponent,
     AuthorWithBooksComponent,
     AuthorsComponent,
@@ -29,10 +25,12 @@ import { BooksComponent } from './books/books.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: 'home', component: HomeComponent },
+      { path: 'home', component: HomeComponent, pathMatch: 'full' },
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'author-with-books/:id', component: AuthorWithBooksComponent },
       { path: 'authors', component: AuthorsComponent },
-      { path: 'books', component: BooksComponent }
+      { path: 'books', component: BooksComponent },
+      { path: '**', component: HomeComponent }
     ])
   ],
   providers: [],
