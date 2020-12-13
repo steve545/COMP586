@@ -19,7 +19,6 @@ export class AuthorsService {
   }
 
   changeId(id: number) {
-    console.log(id);
     this.selectedId.next(id)
   }//changes the id in the author service, so now use the author service in awb to get the
   //authorid and send that id to the controller call

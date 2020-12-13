@@ -17,7 +17,6 @@ export class AuthorsComponent {
     this._authorservice.getAuthors().subscribe(data => this.authors = data);
   }
   newId(authorId:number) {
-    console.log(authorId);
     this._authorservice.changeId(authorId)
   }
 }

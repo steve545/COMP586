@@ -20,9 +20,7 @@ export class AuthorWithBooksComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this._sharedService.getSelectedId().subscribe((selectedId) => { console.log(selectedId); this.authorId = selectedId });
-    console.log(this.authorId);
-    console.log("using authorwithbooksservice");
+    this._sharedService.getSelectedId().subscribe((selectedId) => {  this.authorId = selectedId });
 
     this._authorwithbooksService.getAuthorWithBooks(this.authorId).subscribe(data => this.authorWithBooks = data);
   }
