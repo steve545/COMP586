@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthorwithbooksService } from '../authorwithbooks.service';
 import { AuthorsService } from '../authors.service';
-import { IAuthorWithBooks } from '../authorwithbooks';
 import { HttpClient } from '@angular/common/http';
 
 

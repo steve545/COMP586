@@ -8,11 +8,8 @@ import { BooksService } from '../books.service';
 })
 export class BooksComponent {
   public books = [];
-  message;
 
-  constructor(private _booksservice: BooksService) {
-    this.message = 'Protected endpoint!';
-  }
+  constructor(private _booksservice: BooksService) { }
 
   ngOnInit() {
     this._booksservice.getBooks().subscribe(data => this.books = data);

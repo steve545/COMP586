@@ -80,4 +80,6 @@
       </ResolvedFileToPublish>
     </ItemGroup>
   </Target>
+
+  <ProjectExtensions><VisualStudio><UserProperties clientapp_4package_1json__JsonSchema="https://json.schemastore.org/package.manifest" /></VisualStudio></ProjectExtensions>
 </Project>
