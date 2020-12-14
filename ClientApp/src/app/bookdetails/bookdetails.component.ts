@@ -1,9 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BookdetailsService } from '../bookdetails.service';
 import { BooksService } from '../books.service';
 import { HttpClient } from '@angular/common/http';
-import { IBookDetails } from '../bookdetails';
-import { IBookDetailsModel } from '../bookDetailsModel';
 
 
 

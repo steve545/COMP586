@@ -20,7 +20,6 @@ namespace CoreAngCombinedNew.Controllers
             _context = context;
         }
 
-        // GET: api/AuthorWithBooks/5
         [HttpGet("{id}")]
         [Authorize]
         public async Task<ActionResult<List<AuthorWithBooksVM>>> GetAuthorWithBooks(int id)

@@ -21,7 +21,6 @@ namespace CoreAngCombinedNew.Controllers
             _context = context;
         }
 
-        // GET: api/Books
         [HttpGet]
         [Authorize]
         public async Task<ActionResult<IEnumerable<Books>>> GetBooks()
@@ -29,7 +28,6 @@ namespace CoreAngCombinedNew.Controllers
             return await _context.Books.ToListAsync();
         }
 
-        // GET: api/Books/5
         [HttpGet("{id}")]
         [Authorize]
         public async Task<ActionResult<BookDto>> GetBooks(int id)
@@ -52,9 +50,6 @@ namespace CoreAngCombinedNew.Controllers
             return bookDto;
         }
 
-        // PUT: api/Books/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         [Authorize]
         public async Task<IActionResult> PutBooks(int id, Books books)
@@ -85,9 +80,6 @@ namespace CoreAngCombinedNew.Controllers
             return NoContent();
         }
 
-        // POST: api/Books
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         [Authorize]
         public async Task<ActionResult<Books>> PostBooks(Books books)
@@ -98,7 +90,6 @@ namespace CoreAngCombinedNew.Controllers
             return CreatedAtAction("GetBooks", new { id = books.BookId }, books);
         }
 
-        // DELETE: api/Books/5
         [HttpDelete("{id}")]
         [Authorize]
         public async Task<ActionResult<Books>> DeleteBooks(int id)

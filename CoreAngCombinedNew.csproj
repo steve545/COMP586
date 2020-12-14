@@ -23,6 +23,8 @@
   <ItemGroup>
     <TypeScriptCompile Remove="ClientApp\src\app\authorwithbooks.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\book.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\bookdetails.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\bookDetailsModel.ts" />
     <TypeScriptCompile Remove="ClientApp\src\author.ts" />
   </ItemGroup>
 
