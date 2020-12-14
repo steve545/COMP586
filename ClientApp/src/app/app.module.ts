@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthorWithBooksComponent } from './author-with-books/author-with-books.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { BooksComponent } from './books/books.component';
+import { BookdetailsComponent } from './bookdetails/bookdetails.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BooksComponent } from './books/books.component';
     HomeComponent,
     AuthorWithBooksComponent,
     AuthorsComponent,
-    BooksComponent
+    BooksComponent,
+    BookdetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,6 +32,7 @@ import { BooksComponent } from './books/books.component';
       { path: 'author-with-books/:id', component: AuthorWithBooksComponent },
       { path: 'authors', component: AuthorsComponent },
       { path: 'books', component: BooksComponent },
+      { path: 'book-details/:id', component: BookdetailsComponent },
       { path: '**', component: HomeComponent }
     ])
   ],
