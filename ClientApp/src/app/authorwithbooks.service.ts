@@ -11,8 +11,6 @@ export class AuthorwithbooksService {
   constructor(private http: HttpClient) { }
 
   getAuthorWithBooks(id): Observable<IAuthorWithBooks[]> {
-    console.log("making http request");
-    console.log(id);
     return this.http.get<IAuthorWithBooks[]>('api/authorwithbooks/' + id);
   }
 
