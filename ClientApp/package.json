@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "echo Starting && ng serve",
+    "start": "echo Starting... && ng serve",
     "build": "ng build",
     "build:ssr": "ng run CoreAngCombinedNew:server:dev",
     "test": "ng test",
@@ -23,9 +23,6 @@
     "@angular/router": "11.0.3",
     "@nguniversal/aspnetcore-engine": "^11.0.1",
     "@nguniversal/module-map-ngfactory-loader": "^8.2.6",
-    "@okta/okta-angular": "^3.0.1",
-    "@okta/okta-signin-widget": "^5.1.4",
-    "angular-oauth2-oidc": "^10.0.3",
     "aspnet-prerendering": "^3.0.1",
     "bootstrap": "^4.3.1",
     "core-js": "^3.3.3",
@@ -37,8 +34,8 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1100.4",
-    "@angular/cli": "^11.0.4",
+    "@angular-devkit/build-angular": "~0.1100.3",
+    "@angular/cli": "^11.0.3",
     "@angular/compiler-cli": "^11.0.3",
     "@angular/language-service": "^11.0.3",
     "@types/jasmine": "~3.6.0",
@@ -47,7 +44,7 @@
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
-    "karma": "~5.1.1",
+    "karma": "~5.0.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",

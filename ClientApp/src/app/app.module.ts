@@ -6,34 +6,36 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { CounterComponent } from './counter/counter.component';
+import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { HomeComponent } from './home/home.component';
 import { AuthorWithBooksComponent } from './author-with-books/author-with-books.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { BooksComponent } from './books/books.component';
-import { BookdetailsComponent } from './bookdetails/bookdetails.component';
+import { AuthorsService } from './authors.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
+    CounterComponent,
+    FetchDataComponent,
     HomeComponent,
     AuthorWithBooksComponent,
     AuthorsComponent,
-    BooksComponent,
-    BookdetailsComponent
+    BooksComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: 'home', component: HomeComponent, pathMatch: 'full' },
-      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: 'counter', component: CounterComponent },
+      { path: 'fetch-data', component: FetchDataComponent },
+      { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'author-with-books/:id', component: AuthorWithBooksComponent },
       { path: 'authors', component: AuthorsComponent },
-      { path: 'books', component: BooksComponent },
-      { path: 'book-details/:id', component: BookdetailsComponent },
-      { path: '**', component: HomeComponent }
+      { path: 'books', component: BooksComponent }
     ])
   ],
   providers: [],
