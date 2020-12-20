@@ -1,4 +1,5 @@
 <h1 id="tableLabel">Books</h1>
+
 <p *ngIf="!books"><em>Loading...</em></p>
 
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="books">
@@ -6,7 +7,8 @@
     <tr>
       <th>Book Id</th>
       <th>Author Id</th>
-      <th>Book Title</th>
+      <th>Title</th>
+      <th>Price</th>
     </tr>
   </thead>
   <tbody>
@@ -14,7 +16,7 @@
       <td>{{ book.bookId }}</td>
       <td>{{ book.authorId }}</td>
       <td>{{ book.title }}</td>
-      <td><a (click)="newId(book.bookId)" [routerLink]="['/book-details', book.bookId]">More Details</a></td>
+      <td>${{ book.price }}</td>
     </tr>
   </tbody>
 </table>
